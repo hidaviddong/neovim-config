@@ -60,6 +60,21 @@ vim.keymap.set({ 'n', 't', 'i' }, '<A-j>', '<C-\\><C-n><C-w>j')
 vim.keymap.set({ 'n', 't', 'i' }, '<A-k>', '<C-\\><C-n><C-w>k')
 vim.keymap.set({ 'n', 't', 'i' }, '<A-l>', '<C-\\><C-n><C-w>l')
 
+-- Custome Layout
+
+function setup_dev_layout()
+    vim.cmd('only')
+    vim.cmd('vsplit')
+    vim.cmd('vertical resize 100')
+    vim.cmd('wincmd l')
+    vim.cmd('terminal')
+    vim.cmd('split')
+    vim.cmd('wincmd j')
+    vim.cmd('terminal')
+    vim.cmd('wincmd h')
+end
+
+vim.keymap.set('n', '<leader>l', setup_dev_layout, { desc = 'Setup dev layout' })
 
 -- [[ Autocommands ]]
 -- See `:h nvim_create_autocmd()`
