@@ -1,0 +1,10 @@
+/lazy/
+/swap/
+/undo/
+/backup/
+/sessions/
+*.swp
+*.swo
+/mason/
+.DS_Store
+Thumbs.db

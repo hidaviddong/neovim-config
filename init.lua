@@ -24,8 +24,6 @@ vim.g.mapleader = ' '
 
 -- Enable line numbers
 vim.o.number = true
--- Show line numbers relative to the cursor, aiding vertical jumps (e.g., `5j`)
-vim.o.relativenumber = true
 
 -- Sync clipboard between OS and Neovim
 vim.api.nvim_create_autocmd('UIEnter', {
@@ -79,15 +77,15 @@ vim.cmd('packadd! nohlsearch')
 
 -- [[ Plugin Configuration ]]
 -- This is where we tell lazy.nvim which plugins to install and manage
-
 require('lazy').setup({
-  -- Fuzzy Finder (Telescope)
+-- Fuzzy Finder (Telescope)
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.9',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
       { '<leader>fr', '<cmd>Telescope oldfiles<cr>', desc = '[F]ind [R]ecent files' },
-    },
-  }
-})
+    }
+  
+   }
+  })
