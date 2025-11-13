@@ -75,18 +75,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Load the 'nohlsearch' package to automatically clear search highlights
 vim.cmd('packadd! nohlsearch')
 
--- [[ Plugin Configuration ]]
--- This is where we tell lazy.nvim which plugins to install and manage
-require('lazy').setup({
--- Fuzzy Finder (Telescope)
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.9',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    keys = {
-      { '<leader>fr', '<cmd>Telescope oldfiles<cr>', desc = '[F]ind [R]ecent files' },
-      { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = '[F]ind [F]iles' },
+-- init.lua:
+require("lazy").setup({
+    { 'nvim-tree/nvim-web-devicons', lazy = true},
+    {
+    'nvim-telescope/telescope.nvim', tag = '0.1.9',
+     dependencies = { 'nvim-lua/plenary.nvim' },
+     config = function()
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
+      vim.keymap.set('n', '<leader>bb', require('telescope.builtin').buffers, { desc = 'Find open buffers' })
+     end
     }
-  
-   }
-  })
+})
+
+
