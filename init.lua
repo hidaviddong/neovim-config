@@ -62,8 +62,6 @@ vim.keymap.set({ 'n', 't', 'i' }, '<A-j>', '<C-\\><C-n><C-w>j')
 vim.keymap.set({ 'n', 't', 'i' }, '<A-k>', '<C-\\><C-n><C-w>k')
 vim.keymap.set({ 'n', 't', 'i' }, '<A-l>', '<C-\\><C-n><C-w>l')
 
--- Keymap to quickly open the list of recent files
-vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[F]ind [R]ecent files' })
 
 -- [[ Autocommands ]]
 -- See `:h nvim_create_autocmd()`
@@ -86,7 +84,10 @@ require('lazy').setup({
   -- Fuzzy Finder (Telescope)
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.9', 
+    tag = '0.1.9',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    keys = {
+      { '<leader>fr', '<cmd>Telescope oldfiles<cr>', desc = '[F]ind [R]ecent files' },
+    },
   }
 })
