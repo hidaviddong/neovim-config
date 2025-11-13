@@ -85,6 +85,7 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
       { '<leader>fr', '<cmd>Telescope oldfiles<cr>', desc = '[F]ind [R]ecent files' },
+      { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = '[F]ind [F]iles' },
     }
   
    }
