@@ -1,23 +1,24 @@
--- [[ Set up lazy.nvim (Plugin Manager) ]]
--- This must be at the very top of your configuration
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', 
-    lazypath,
-  })
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
--- [[ Global Settings ]]
 
--- Set space as the leader key.
--- This is the most important setting, making all custom shortcuts ergonomic.
-vim.g.mapleader = ' '
-
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 -- [[ Core Neovim Options ]]
 -- See `:h vim.o` for a full list of options
 
@@ -93,7 +94,7 @@ vim.cmd('packadd! nohlsearch')
 
 -- init.lua:
 require("lazy").setup({
-    { 'nvim-tree/nvim-web-devicons', lazy = true},
+    { 'nvim-tree/nvim-web-devicons', lazy = true  },
     {
     'nvim-telescope/telescope.nvim', tag = '0.1.9',
      dependencies = { 'nvim-lua/plenary.nvim' },
@@ -113,9 +114,9 @@ require("lazy").setup({
      opts = {},
      dependencies = {
          { "mason-org/mason.nvim", opts = {} },
-	 "neovim/nvim-lspconfig",
+	 "neovim/nvim-lspconfig" },
     },
-    }
+    checker = { enabled = true },
 })
 
 
