@@ -12,7 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 -- [[ Global Settings ]]
 
 -- Set space as the leader key.
@@ -76,6 +75,8 @@ end
 
 vim.keymap.set('n', '<leader>l', setup_dev_layout, { desc = 'Setup dev layout' })
 
+-- [[ Theme ]]
+vim.cmd.colorscheme 'moegi-light'
 -- [[ Autocommands ]]
 -- See `:h nvim_create_autocmd()`
 
