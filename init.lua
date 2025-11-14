@@ -13,7 +13,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
-
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
@@ -131,6 +130,33 @@ require("lazy").setup({
 		}
 	    })
     end,
+    },
+    {
+	'saghen/blink.cmp',
+	dependencies = { 'xzbdmw/colorful-menu.nvim' },
+	version = '1.*',
+	opts = {
+ 	  completion = {
+		documentation = {
+			auto_show = true
+		},
+		menu = {
+                  draw = {
+                    columns = { { "kind_icon" }, { "label", gap = 1 } },
+                    components = {
+                        label = {
+                            text = function(ctx)
+                                return require("colorful-menu").blink_components_text(ctx)
+                            end,
+                            highlight = function(ctx)
+                                return require("colorful-menu").blink_components_highlight(ctx)
+                            end,
+                        },
+                    },
+                },
+            },
+	  }
+	}
     },
     checker = { enabled = true },
 })
