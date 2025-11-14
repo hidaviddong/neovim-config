@@ -1,6 +1,7 @@
 -- Moegi Light Theme for Neovim (Opaque Version)
 -- Converted from the VSCode "Moegi Light" theme.
 -- All transparent colors have been replaced with opaque equivalents.
+-- https://github.com/moegi-design/vscode-theme/blob/main/themes/moegi-light-color-theme.json
 
 vim.o.background = 'light'
 
