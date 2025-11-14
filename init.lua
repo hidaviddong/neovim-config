@@ -121,7 +121,6 @@ require("lazy").setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
 	    require('lualine').setup({
-		options = { theme = "onelight" },
 		sections = {
 			lualine_a = {'mode'},
 			lualine_b = {'branch', 'diff'},
@@ -135,5 +134,3 @@ require("lazy").setup({
     },
     checker = { enabled = true },
 })
-
-
