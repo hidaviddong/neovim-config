@@ -31,6 +31,14 @@ vim.api.nvim_create_autocmd('UIEnter', {
   end,
 })
 
+-- Auto save and format
+vim.api.nvim_create_autocmd("BufWritePre", {
+  desc = "Format on save",
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
+})
+
 -- Enable smart case-insensitive searching
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -74,6 +82,9 @@ function setup_dev_layout()
 end
 
 vim.keymap.set('n', '<leader>l', setup_dev_layout, { desc = 'Setup dev layout' })
+vim.keymap.set("n", "gl", function() 
+    vim.diagnostic.open_float({ border = "rounded", source = true }) 
+end, { desc = "Show diagnostic error" })
 
 -- [[ Theme ]]
 vim.cmd.colorscheme 'moegi-light'
