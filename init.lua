@@ -99,9 +99,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Load the 'nohlsearch' package to automatically clear search highlights
-vim.cmd('packadd! nohlsearch')
-
 -- init.lua:
 require("lazy").setup({
     { 'nvim-tree/nvim-web-devicons', lazy = true  },
